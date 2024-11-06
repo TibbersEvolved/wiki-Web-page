@@ -11,14 +11,14 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PerksImport } from './routes/perks'
+import { Route as GemsImport } from './routes/gems'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const PerksRoute = PerksImport.update({
-  id: '/perks',
-  path: '/perks',
+const GemsRoute = GemsImport.update({
+  id: '/gems',
+  path: '/gems',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +39,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/perks': {
-      id: '/perks'
-      path: '/perks'
-      fullPath: '/perks'
-      preLoaderRoute: typeof PerksImport
+    '/gems': {
+      id: '/gems'
+      path: '/gems'
+      fullPath: '/gems'
+      preLoaderRoute: typeof GemsImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/perks': typeof PerksRoute
+  '/gems': typeof GemsRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/perks': typeof PerksRoute
+  '/gems': typeof GemsRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/perks': typeof PerksRoute
+  '/gems': typeof GemsRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/perks'
+  fullPaths: '/' | '/gems'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/perks'
-  id: '__root__' | '/' | '/perks'
+  to: '/' | '/gems'
+  id: '__root__' | '/' | '/gems'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PerksRoute: typeof PerksRoute
+  GemsRoute: typeof GemsRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PerksRoute: PerksRoute,
+  GemsRoute: GemsRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +97,14 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/perks"
+        "/gems"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/perks": {
-      "filePath": "perks.tsx"
+    "/gems": {
+      "filePath": "gems.tsx"
     }
   }
 }

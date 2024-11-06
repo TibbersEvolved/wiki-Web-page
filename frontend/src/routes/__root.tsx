@@ -22,13 +22,13 @@ function RootComponent() {
           Home
         </Link>{' '}
         <Link
-          to="/perks"
+          to="/gems"
           className='btn btn-primary btn-sm'
           activeProps={{
             className: 'font-bold',
           }}
         >
-          Perks
+          Gems
         </Link>
       </div>
       <hr />
