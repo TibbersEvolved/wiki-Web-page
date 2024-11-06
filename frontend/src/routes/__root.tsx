@@ -10,9 +10,10 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      <div className="p-2 flex gap-2 text-lg">
+      <div className="p-2 flex justify-center gap-4">
         <Link
           to="/"
+          className='btn btn-primary btn-sm'
           activeProps={{
             className: 'font-bold',
           }}
@@ -21,12 +22,13 @@ function RootComponent() {
           Home
         </Link>{' '}
         <Link
-          to="/about"
+          to="/perks"
+          className='btn btn-primary btn-sm'
           activeProps={{
             className: 'font-bold',
           }}
         >
-          About
+          Perks
         </Link>
       </div>
       <hr />
