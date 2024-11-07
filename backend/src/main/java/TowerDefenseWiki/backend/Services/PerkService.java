@@ -1,8 +1,8 @@
-package Services;
+package TowerDefenseWiki.backend.Services;
 
-import DTO.PerkDto;
-import Models.Perk;
-import Repository.PerkRepository;
+import TowerDefenseWiki.backend.DTO.PerkDto;
+import TowerDefenseWiki.backend.Models.Perk;
+import TowerDefenseWiki.backend.Repository.PerkRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +11,7 @@ import java.util.List;
 public class PerkService {
 
     private PerkRepository repo;
+
 
     public PerkService(PerkRepository repo) {
         this.repo = repo;

@@ -1,6 +1,6 @@
-package Repository;
+package TowerDefenseWiki.backend.Repository;
 
-import Models.Perk;
+import TowerDefenseWiki.backend.Models.Perk;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

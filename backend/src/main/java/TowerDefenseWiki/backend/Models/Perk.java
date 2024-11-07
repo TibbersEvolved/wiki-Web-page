@@ -1,4 +1,4 @@
-package Models;
+package TowerDefenseWiki.backend.Models;
 
 public class Perk {
     private int id;
