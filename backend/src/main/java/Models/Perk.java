@@ -14,5 +14,23 @@ public class Perk {
         this.rarity = rarity;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getRarity() {
+        return rarity;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

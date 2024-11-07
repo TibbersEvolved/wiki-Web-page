@@ -44,4 +44,8 @@ public class PerkRepository {
     public PerkRepository() {
         perks.addAll(getFillerContent());
     }
+
+    public List<Perk> getPerks() {
+        return perks;
+    }
 }
