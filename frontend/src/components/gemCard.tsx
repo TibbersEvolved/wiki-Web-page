@@ -7,11 +7,11 @@ const colorEpic = "text-purple-800";
 export default function GemCard(props : gemProp) {
     const img_path : string = "/src/assets/gems/" + props.imageLink;
     const rarityColor = getColor(props.rarity);
-       
+
     return (<>
     <section className="flex flex-col bg-primary size-60 text-center items-center rounded hover:bg-secondary
     transition-colors pt-2">
-        <img src={img_path} className="size-20"></img>
+        <img src={img_path} draggable="false" className="size-20"></img>
         <div className="font-extrabold ">{props.name}</div>
         <div className={"font-bold " + rarityColor}>{props.rarity}</div>
         <div>{props.description}</div>

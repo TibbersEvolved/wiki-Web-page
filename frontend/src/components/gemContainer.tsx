@@ -1,18 +1,34 @@
 import GemCard from "./gemCard";
+import { useQuery } from "@tanstack/react-query";
+
+type gemDTO = {
+  name: string;
+  description: string;
+  imageLink: string;
+  rarity: string;
+};
 
 export default function GemContainer() {
-    return (
+  const { isPending, error, data } = useQuery({
+    queryKey: ["perkData"],
+    queryFn: async () =>
+      fetch("http://localhost:8080/api/perks").then((res) => res.json()),
+  });
+  if (isPending) return "Loading...";
+  if (error) return "An error has occurred: " + error.message;
+
+  return (
     <div className="flex justify-center gap-4 flex-wrap">
-        <GemCard name="Emerald Gem" description="Increases attack speed by 30%" rarity="Rare" 
-        imageLink="gemEmerald.png"/>
-        <GemCard name="Azure Gem" description="Increases attack speed by 30%" rarity="Rare" 
-        imageLink="gemAzure.png"/>
-        <GemCard name="Pyro Gem" description="+100% damage for first 10 seconds of a round" rarity="Rare" 
-        imageLink="gemPyro.png"/>
-        <GemCard name="Asmethyst" description="Increases attack speed by 70%" rarity="Epic" 
-        imageLink="gemPurple.png"/>
-        <GemCard name="Jade" description="Increases the towers range by 10" rarity="Common" 
-        imageLink="gemJade.png"/>
+      {data.map((res) => {
+        return (
+          <GemCard
+            name={res.name}
+            description={res.description}
+            imageLink={res.imageLink}
+            rarity={res.rarity}
+          />
+        );
+      })}
     </div>
-    )
+  );
 }
