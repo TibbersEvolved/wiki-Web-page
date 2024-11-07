@@ -9,6 +9,10 @@ export default function GemContainer() {
         imageLink="gemAzure.png"/>
         <GemCard name="Pyro Gem" description="+100% damage for first 10 seconds of a round" rarity="Rare" 
         imageLink="gemPyro.png"/>
+        <GemCard name="Asmethyst" description="Increases attack speed by 70%" rarity="Epic" 
+        imageLink="gemPurple.png"/>
+        <GemCard name="Jade" description="Increases the towers range by 10" rarity="Common" 
+        imageLink="gemJade.png"/>
     </div>
     )
 }
