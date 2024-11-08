@@ -1,3 +1,4 @@
+import GemAdd from "./gemAdd";
 import GemCard from "./gemCard";
 import { useQuery } from "@tanstack/react-query";
 
@@ -29,6 +30,7 @@ export default function GemContainer() {
           />
         );
       })}
+      <GemAdd />
     </div>
   );
 }
