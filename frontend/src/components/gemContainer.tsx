@@ -2,7 +2,7 @@ import GemAdd from "./gemAdd";
 import GemCard from "./gemCard";
 import { useQuery } from "@tanstack/react-query";
 
-type gemDTO = {
+export type gemDTO = {
   name: string;
   description: string;
   imageLink: string;
