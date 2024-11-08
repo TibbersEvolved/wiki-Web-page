@@ -1,4 +1,7 @@
 import { useState } from "react";
+const colorBase = "text-cyan-600";
+const colorRare = "text-lime-500";
+const colorEpic = "text-purple-800";
 
 export default function () {
   const [side, changeSide] = useState(false);
@@ -27,9 +30,15 @@ export default function () {
           <div>Description</div>
           <input className="rounded"></input>
           <select name="Rarity" className="rounded">
-            <option value="Common">Common</option>
-            <option value="Rare">Rare</option>
-            <option value="Epic">Epic</option>
+            <option value="Common" className={colorBase}>
+              Common
+            </option>
+            <option value="Rare" className={colorRare}>
+              Rare
+            </option>
+            <option value="Epic" className={colorEpic}>
+              Epic
+            </option>
           </select>
           <select name="Image" className="rounded">
             <option value="Ruby">Ruby</option>

@@ -1,6 +1,6 @@
 package TowerDefenseWiki.backend.Services;
 
-import TowerDefenseWiki.backend.DTO.PerkDto;
+import TowerDefenseWiki.backend.DTO.GemDto;
 import TowerDefenseWiki.backend.Models.Perk;
 import TowerDefenseWiki.backend.Repository.PerkRepository;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,11 @@ public class PerkService {
         this.repo = repo;
     }
 
-    public List<PerkDto> getAllPerks() {
-        List<Perk> perks = repo.getPerks();
-        List<PerkDto> output = perks.stream()
+    public List<GemDto> getAllGems() {
+        List<Perk> perks = repo.getGems();
+        List<GemDto> output = perks.stream()
                 .map(perk -> {
-                    return new PerkDto(perk.getName(),perk.getDescription(),perk.getImageLink(), perk.getRarity());
+                    return new GemDto(perk.getName(),perk.getDescription(),perk.getImageLink(), perk.getRarity());
                 })
                 .toList();
         return output;

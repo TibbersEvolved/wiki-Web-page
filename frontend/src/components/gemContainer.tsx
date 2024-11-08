@@ -23,6 +23,7 @@ export default function GemContainer() {
       {data.map((res) => {
         return (
           <GemCard
+            key={res.name}
             name={res.name}
             description={res.description}
             imageLink={res.imageLink}

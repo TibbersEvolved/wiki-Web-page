@@ -1,6 +1,6 @@
 package TowerDefenseWiki.backend.Http;
 
-import TowerDefenseWiki.backend.DTO.PerkDto;
+import TowerDefenseWiki.backend.DTO.GemDto;
 import TowerDefenseWiki.backend.Services.PerkService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +20,10 @@ public class PerkController {
 
 
     @GetMapping("/api/perks")
-    public List<PerkDto> getAllPerks() {
-        return service.getAllPerks();
+    public List<GemDto> getAllGems() {
+        return service.getAllGems();
     }
+
+
 
 }
