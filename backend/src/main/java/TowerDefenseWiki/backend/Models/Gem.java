@@ -8,7 +8,7 @@ public class Gem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -44,7 +44,7 @@ public class Gem {
         return rarity;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 }

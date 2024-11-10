@@ -1,5 +1,6 @@
 package TowerDefenseWiki.backend.Http;
 
+import TowerDefenseWiki.backend.DTO.AddGemDto;
 import TowerDefenseWiki.backend.DTO.GemDto;
 import TowerDefenseWiki.backend.Models.Gem;
 import TowerDefenseWiki.backend.Services.GemService;
@@ -25,7 +26,7 @@ public class GemController {
     }
 
     @PostMapping("/api/perks")
-    public ResponseEntity addGem(@RequestBody GemDto dto) {
+    public ResponseEntity addGem(@RequestBody AddGemDto dto) {
         service.addGem(dto);
         return ResponseEntity.ok().build();
     }
@@ -33,8 +34,8 @@ public class GemController {
 
     private List<GemDto> convertGemsToDto(List<Gem> gems) {
         return gems.stream()
-                .map(perk -> {
-                    return new GemDto(perk.getName(),perk.getDescription(),perk.getImageLink(), perk.getRarity());
+                .map(gem -> {
+                    return new GemDto(gem.getName(),gem.getDescription(),gem.getImageLink(), gem.getRarity(), gem.getId());
                 })
                 .toList();
     }
