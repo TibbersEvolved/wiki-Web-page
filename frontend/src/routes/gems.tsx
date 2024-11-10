@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import GemContainer from "../components/gemContainer";
+import GemContainer from "../components/gems/gemContainer";
 
 export const Route = createFileRoute("/gems")({
   component: AboutComponent,

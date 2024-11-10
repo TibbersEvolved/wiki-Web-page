@@ -1,12 +1,21 @@
-import { removeGem } from "../Server/server";
+import { useQueryClient } from "@tanstack/react-query";
+import { removeGem } from "../../Server/server";
 
 const colorBase = "text-cyan-600";
 const colorRare = "text-lime-500";
 const colorEpic = "text-purple-800";
 
 export default function GemCard(props: gemProp) {
+  const queryClient = useQueryClient();
   const img_path: string = "/src/assets/gems/" + props.imageLink;
   const rarityColor = getColor(props.rarity);
+  async function handleDelete(id: number) {
+    await removeGem(id);
+    queryClient.invalidateQueries({
+      queryKey: ["perkData"],
+      refetchType: "all",
+    });
+  }
 
   return (
     <>
@@ -36,11 +45,6 @@ type gemProp = {
   rarity: string;
   gemId: number;
 };
-
-function handleDelete(id: number) {
-  console.log("Ran delete with " + id);
-  removeGem(id);
-}
 
 function getColor(rarity: string) {
   if (rarity === "Rare") {

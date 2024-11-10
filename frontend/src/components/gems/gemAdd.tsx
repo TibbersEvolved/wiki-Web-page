@@ -1,7 +1,8 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { gemDTO } from "./gemContainer";
-import { postGem } from "../Server/server";
+import { postGem } from "../../Server/server";
+import ImageLinkOptions from "./imageLinkOptions";
 
 const colorBase = "text-cyan-600";
 const colorRare = "text-lime-500";
@@ -10,7 +11,8 @@ const colorEpic = "text-purple-800";
 export default function GemADD() {
   const queryClient = useQueryClient();
   const [side, changeSide] = useState(false);
-  function handlePost(e: React.FormEvent<HTMLFormElement>) {
+
+  async function handlePost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const input = e.currentTarget;
     const dto: gemDTO = {
@@ -19,11 +21,12 @@ export default function GemADD() {
       imageLink: (input.elements[3] as HTMLInputElement).value,
       rarity: (input.elements[2] as HTMLInputElement).value,
     };
-    postGem(dto);
+    await postGem(dto);
     queryClient.invalidateQueries({
       queryKey: ["perkData"],
       refetchType: "all",
     });
+    changeSide(false);
   }
 
   if (!side)
@@ -61,11 +64,7 @@ export default function GemADD() {
               Epic
             </option>
           </select>
-          <select name="imageLink" className="rounded">
-            <option value="gemRuby.png">Ruby</option>
-            <option value="gemAzure.png">Azure</option>
-            <option value="gemPurple.png">Purple</option>
-          </select>
+          <ImageLinkOptions />
           <footer className="flex mt-1 gap-2">
             <button className="btn btn-success" type="submit">
               Create

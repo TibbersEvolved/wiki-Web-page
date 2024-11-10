@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@tanstack/router-plugin": "^1.79.0",
+    "@types/node": "^22.9.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.2",
@@ -25,6 +26,8 @@
     "@tanstack/react-query": "^5.59.20",
     "@tanstack/react-router": "^1.79.0",
     "@tanstack/router-devtools": "^1.79.0",
+    "get-all-files": "^5.0.0",
+    "list-files": "^1.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }
