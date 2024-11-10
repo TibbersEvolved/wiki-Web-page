@@ -2,8 +2,12 @@ debug: true
 server:
   port: 3000
 spring:
-  #  Configure datasource here
-  #  JPA can also need some config!
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://deep-grouse-63.clerk.accounts.dev
+          audiences: TowerWiki
   sql:
     init:
       platform: postgresql
@@ -23,7 +27,7 @@ spring:
     show-sql: true
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create # none, create ...
+      ddl-auto: create
       spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
 logging:
   level:

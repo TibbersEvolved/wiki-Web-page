@@ -2,6 +2,7 @@ package TowerDefenseWiki.backend.Http;
 
 import TowerDefenseWiki.backend.DTO.AddGemDto;
 import TowerDefenseWiki.backend.DTO.GemDto;
+import TowerDefenseWiki.backend.DTO.IdDto;
 import TowerDefenseWiki.backend.Models.Gem;
 import TowerDefenseWiki.backend.Services.GemService;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,18 @@ public class GemController {
     }
 
 
-    @GetMapping("/api/perks")
+    @GetMapping("/api/gems")
     public List<GemDto> getAllGems() {
         return convertGemsToDto(service.getAllGems());
     }
 
-    @PostMapping("/api/perks")
+    @DeleteMapping("/api/gems/admin")
+    public ResponseEntity deleteGem(@RequestBody IdDto input) {
+        service.deleteGem(input.id());
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/api/gems/admin")
     public ResponseEntity addGem(@RequestBody AddGemDto dto) {
         service.addGem(dto);
         return ResponseEntity.ok().build();
