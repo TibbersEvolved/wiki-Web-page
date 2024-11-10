@@ -1,0 +1,33 @@
+debug: true
+server:
+  port: 3000
+spring:
+  #  Configure datasource here
+  #  JPA can also need some config!
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+
+    output:
+      ansi:
+        enabled: always
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/wikiDB
+    username: salt
+    password: secret
+
+
+  jpa:
+    show-sql: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create # none, create ...
+      spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR

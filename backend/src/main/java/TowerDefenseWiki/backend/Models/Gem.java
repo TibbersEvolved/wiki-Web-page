@@ -1,13 +1,27 @@
 package TowerDefenseWiki.backend.Models;
 
-public class Perk {
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
+
+@Entity
+public class Gem {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name")
     private String name;
+    @Column(name = "imageLink")
     private String imageLink;
+    @Column(name = "description")
     private String description;
+    @Column(name = "rarity")
     private String rarity;
 
-    public Perk(String name, String imageLink, String description, String rarity) {
+    public Gem () {
+    }
+    public Gem(String name, String imageLink, String description, String rarity) {
         this.name = name;
         this.imageLink = imageLink;
         this.description = description;

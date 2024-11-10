@@ -1,6 +1,6 @@
 import GemAdd from "./gemAdd";
 import GemCard from "./gemCard";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export type gemDTO = {
   name: string;
