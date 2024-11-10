@@ -1,5 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { gemDTO } from "../components/gems/gemContainer";
+import { userNotification } from "../utility/messages";
 
 export async function postGem(dto: gemDTO) {
   const response = await fetch("http://localhost:3000/api/gems", {
@@ -10,8 +11,11 @@ export async function postGem(dto: gemDTO) {
     body: JSON.stringify(dto),
   });
   if (!response.ok) {
-    return "hey";
-  } else return "heya";
+    userNotification(await response.json(), false);
+    return;
+  }
+  userNotification("Added Gem!", true);
+  return;
 }
 
 export async function removeGem(id: number) {
@@ -19,6 +23,9 @@ export async function removeGem(id: number) {
     method: "DELETE",
   });
   if (!response.ok) {
-    return "hey";
-  } else return "heya";
+    userNotification(await response.json(), false);
+    return;
+  }
+  userNotification("Deleted Gem!", true);
+  return;
 }

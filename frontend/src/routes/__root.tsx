@@ -3,6 +3,8 @@ import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import "../../css/style.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -14,6 +16,7 @@ function RootComponent() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        <ToastContainer />
         <div className="p-2 flex justify-center gap-4 bg-gray-600 shadow-inner border-b-2 border-solid border-gray-500">
           <Link
             to="/"

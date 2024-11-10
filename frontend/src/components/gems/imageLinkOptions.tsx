@@ -19,8 +19,12 @@ const basePath = "/src/assets/gems/gem";
 export default function ImageLinkOptions() {
   return (
     <select name="imageLink" className="rounded">
-      {images.map((res) => {
-        return <option value={"gem" + res + ".png"}>{res}</option>;
+      {images.map((res, index) => {
+        return (
+          <option key={index} value={"gem" + res + ".png"}>
+            {res}
+          </option>
+        );
       })}
     </select>
   );

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { gemDTO } from "./gemContainer";
 import { postGem } from "../../Server/server";
 import ImageLinkOptions from "./imageLinkOptions";
+import { userNotification } from "../../utility/messages";
 
 const colorBase = "text-cyan-600";
 const colorRare = "text-lime-500";
@@ -21,6 +22,14 @@ export default function GemADD() {
       imageLink: (input.elements[3] as HTMLInputElement).value,
       rarity: (input.elements[2] as HTMLInputElement).value,
     };
+    if (dto.name.length <= 3) {
+      userNotification("Name must be longer than 3 letters!", false);
+      return;
+    }
+    if (dto.description.length <= 6) {
+      userNotification("Must have a description over 6 letters!", false);
+      return;
+    }
     await postGem(dto);
     queryClient.invalidateQueries({
       queryKey: ["perkData"],
@@ -50,9 +59,9 @@ export default function GemADD() {
       >
         <form className="flex flex-col gap-1" onSubmit={(e) => handlePost(e)}>
           <div>Name</div>
-          <input className="rounded" name="Name"></input>
+          <input className="rounded" name="Name" maxLength={22}></input>
           <div>Description</div>
-          <input className="rounded"></input>
+          <input className="rounded" maxLength={90}></input>
           <select name="rarity" className="rounded">
             <option value="Common" className={colorBase}>
               Common
