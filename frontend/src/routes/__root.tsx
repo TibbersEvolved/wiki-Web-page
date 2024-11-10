@@ -5,10 +5,15 @@ import "../../css/style.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ClerkProvider } from "@clerk/clerk-react";
+import MainNavBar from "../components/mainNavBar";
 
 export const Route = createRootRoute({
   component: RootComponent,
 });
+
+const PUBLISHABLE_KEY =
+  "pk_test_ZGVlcC1ncm91c2UtNjMuY2xlcmsuYWNjb3VudHMuZGV2JA";
 
 const queryClient = new QueryClient();
 
@@ -17,29 +22,11 @@ function RootComponent() {
     <>
       <QueryClientProvider client={queryClient}>
         <ToastContainer />
-        <div className="p-2 flex justify-center gap-4 bg-gray-600 shadow-inner border-b-2 border-solid border-gray-500">
-          <Link
-            to="/"
-            className="btn btn-primary btn-sm"
-            activeProps={{
-              className: "font-bold",
-            }}
-            activeOptions={{ exact: true }}
-          >
-            Home
-          </Link>{" "}
-          <Link
-            to="/gems"
-            className="btn btn-primary btn-sm"
-            activeProps={{
-              className: "font-bold",
-            }}
-          >
-            Gems
-          </Link>
-        </div>
-        <hr />
-        <Outlet />
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+          <MainNavBar />
+          <hr />
+          <Outlet />
+        </ClerkProvider>
       </QueryClientProvider>
     </>
   );

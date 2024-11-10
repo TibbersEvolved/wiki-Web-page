@@ -1,5 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { removeGem } from "../../Server/server";
+import { SignedIn, useAuth } from "@clerk/clerk-react";
 
 const colorBase = "text-cyan-600";
 const colorRare = "text-lime-500";
@@ -7,10 +8,12 @@ const colorEpic = "text-purple-800";
 
 export default function GemCard(props: gemProp) {
   const queryClient = useQueryClient();
+  const { getToken } = useAuth();
   const img_path: string = "/src/assets/gems/" + props.imageLink;
   const rarityColor = getColor(props.rarity);
+
   async function handleDelete(id: number) {
-    await removeGem(id);
+    await removeGem(id, await getToken());
     queryClient.invalidateQueries({
       queryKey: ["perkData"],
       refetchType: "all",
@@ -27,12 +30,14 @@ export default function GemCard(props: gemProp) {
         <div className="font-extrabold ">{props.name}</div>
         <div className={"font-bold " + rarityColor}>{props.rarity}</div>
         <div>{props.description}</div>
-        <button
-          className="btn btn-warning btn-xs"
-          onClick={() => handleDelete(props.gemId)}
-        >
-          Remove
-        </button>
+        <SignedIn>
+          <button
+            className="btn btn-warning btn-xs"
+            onClick={() => handleDelete(props.gemId)}
+          >
+            Remove
+          </button>
+        </SignedIn>
       </section>
     </>
   );

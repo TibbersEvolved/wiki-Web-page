@@ -1,3 +1,4 @@
+import { SignedIn } from "@clerk/clerk-react";
 import GemAdd from "./gemAdd";
 import GemCard from "./gemCard";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -7,6 +8,14 @@ export type gemDTO = {
   description: string;
   imageLink: string;
   rarity: string;
+};
+
+type gemData = {
+  name: string;
+  description: string;
+  imageLink: string;
+  rarity: string;
+  id: number;
 };
 
 export default function GemContainer() {
@@ -20,7 +29,7 @@ export default function GemContainer() {
 
   return (
     <div className="flex justify-center gap-4 flex-wrap">
-      {data.map((res) => {
+      {data.map((res: gemData) => {
         return (
           <GemCard
             key={res.id}
@@ -32,7 +41,9 @@ export default function GemContainer() {
           />
         );
       })}
-      <GemAdd />
+      <SignedIn>
+        <GemAdd />
+      </SignedIn>
     </div>
   );
 }

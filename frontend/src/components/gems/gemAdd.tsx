@@ -4,6 +4,7 @@ import { gemDTO } from "./gemContainer";
 import { postGem } from "../../Server/server";
 import ImageLinkOptions from "./imageLinkOptions";
 import { userNotification } from "../../utility/messages";
+import { useAuth } from "@clerk/clerk-react";
 
 const colorBase = "text-cyan-600";
 const colorRare = "text-lime-500";
@@ -12,6 +13,7 @@ const colorEpic = "text-purple-800";
 export default function GemADD() {
   const queryClient = useQueryClient();
   const [side, changeSide] = useState(false);
+  const { getToken } = useAuth();
 
   async function handlePost(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,7 +32,7 @@ export default function GemADD() {
       userNotification("Must have a description over 6 letters!", false);
       return;
     }
-    await postGem(dto);
+    await postGem(dto, await getToken());
     queryClient.invalidateQueries({
       queryKey: ["perkData"],
       refetchType: "all",
