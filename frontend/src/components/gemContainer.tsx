@@ -13,7 +13,7 @@ export default function GemContainer() {
   const { isPending, error, data } = useQuery({
     queryKey: ["perkData"],
     queryFn: async () =>
-      fetch("http://localhost:8080/api/perks").then((res) => res.json()),
+      fetch("http://localhost:3000/api/gems").then((res) => res.json()),
   });
   if (isPending) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
@@ -23,7 +23,8 @@ export default function GemContainer() {
       {data.map((res) => {
         return (
           <GemCard
-            key={res.name}
+            key={res.id}
+            gemId={res.id}
             name={res.name}
             description={res.description}
             imageLink={res.imageLink}
