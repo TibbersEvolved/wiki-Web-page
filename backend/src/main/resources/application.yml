@@ -1,6 +1,6 @@
 debug: true
 server:
-  port: 3000
+  port: 8080
 spring:
   config.import: optional:secrets.yml
   security:
@@ -20,7 +20,7 @@ spring:
 
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/wikiDB}
-    username: ${DB_USERNAME:salt}
+    username: ${DB_SALT:salt}
     password: ${DB_PASSWORD:secret}
 
 
