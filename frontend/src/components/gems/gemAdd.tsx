@@ -1,7 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { gemDTO } from "./gemContainer";
-import { postGem } from "../../Server/server";
+import { postGem } from "../../server/server";
 import ImageLinkOptions from "./imageLinkOptions";
 import { userNotification } from "../../utility/messages";
 import { useAuth } from "@clerk/clerk-react";

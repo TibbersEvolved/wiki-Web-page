@@ -11,8 +11,7 @@ export const Route = createRootRoute({
   component: RootComponent,
 });
 
-const PUBLISHABLE_KEY =
-  "pk_test_ZGVlcC1ncm91c2UtNjMuY2xlcmsuYWNjb3VudHMuZGV2JA";
+const PUBLISHABLE_KEY = import.meta.env.VITE_APIKEY;
 const queryClient = new QueryClient();
 
 function RootComponent() {

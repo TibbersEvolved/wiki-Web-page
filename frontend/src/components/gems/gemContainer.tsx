@@ -3,6 +3,8 @@ import GemAdd from "./gemAdd";
 import GemCard from "./gemCard";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
+const basePath = import.meta.env.VITE_URL;
+
 export type gemDTO = {
   name: string;
   description: string;
@@ -21,8 +23,7 @@ type gemData = {
 export default function GemContainer() {
   const { isPending, error, data } = useQuery({
     queryKey: ["perkData"],
-    queryFn: async () =>
-      fetch("http://localhost:3000/api/gems").then((res) => res.json()),
+    queryFn: async () => fetch(basePath + "api/gems").then((res) => res.json()),
   });
   if (isPending) return "Loading...";
   if (error) return "An error has occurred: " + error.message;

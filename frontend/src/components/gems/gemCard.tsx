@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { removeGem } from "../../Server/server";
+import { removeGem } from "../../server/server";
 import { SignedIn, useAuth } from "@clerk/clerk-react";
 
 const colorBase = "text-cyan-600";
