@@ -27,7 +27,7 @@ spring:
     show-sql: true
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
 logging:
   level:

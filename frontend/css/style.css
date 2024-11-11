@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.index-topic {
+  width: 100%;
+  min-height: 300px;
+}
+
+.index-topic-image {
+  width: 50%;
+}

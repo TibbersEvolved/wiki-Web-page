@@ -1,6 +1,8 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import IndexImageGallery from "../components/index/indexImageGallery";
+import * as data from "../components/index/indexText";
+import IndexTopic from "../components/index/indexTopic";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -8,22 +10,35 @@ export const Route = createFileRoute("/")({
 
 function HomeComponent() {
   return (
-    <div className="p-2 text-center">
+    <div className="p-2 text-center flex flex-col items-center gap-5">
       <header className="p-3 text-3xl font-bold">Tower Defense Wiki</header>
       <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quod vero
-        velit placeat. Ipsam error rem aliquam quia sint, eaque optio minus,
-        libero impedit quis atque? Debitis deserunt quia quibusdam quidem,
-        magnam tempore optio. Omnis sint quidem eaque aliquam hic similique
-        accusantium nulla quam temporibus voluptatibus, natus aperiam pariatur
-        libero quae minus et! Doloribus sit, itaque explicabo dolores, tenetur
-        inventore aliquam veritatis, non praesentium vitae adipisci? Odit fugit
-        cumque ipsum tenetur architecto earum dicta laborum. Quibusdam sunt
-        laudantium aperiam impedit repellat amet excepturi autem voluptatum
-        nulla in possimus repellendus, dicta quidem voluptatibus voluptate. Unde
-        sit corrupti nisi tempore culpa eius?
+        Welcome to the Tower Defense Wiki! This is a place to find information
+        about the up and coming rougelike tower defense game develeoped by Erik
+        Olin. It's a strategy game where you must carefully manage resources,
+        build clever defenses and play around random factors each game. The game
+        is set to release in 2025. All pictures and data shown in this wiki is
+        work in progress and subject to change!
       </div>
-      <IndexImageGallery />
+      <header className="text-3xl font-bold">Core Mechanics:</header>
+      <IndexTopic
+        title={data.defense_title}
+        text={data.defense_text}
+        imageLeft={true}
+        image="/src/assets/screenshots/defense.png"
+      />
+      <IndexTopic
+        title={data.science_title}
+        text={data.science_text}
+        imageLeft={false}
+        image="/src/assets/screenshots/science.png"
+      />
+      <IndexTopic
+        title={data.upgrade_title}
+        text={data.upgrade_text}
+        imageLeft={true}
+        image="/src/assets/screenshots/upgrade.png"
+      />
     </div>
   );
 }

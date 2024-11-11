@@ -1,7 +1,5 @@
 package TowerDefenseWiki.backend.Models;
-
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
 @Entity
 public class Gem {

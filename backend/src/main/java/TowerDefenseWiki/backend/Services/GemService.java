@@ -1,7 +1,6 @@
 package TowerDefenseWiki.backend.Services;
 
 import TowerDefenseWiki.backend.DTO.AddGemDto;
-import TowerDefenseWiki.backend.DTO.GemDto;
 import TowerDefenseWiki.backend.Models.Gem;
 import TowerDefenseWiki.backend.Repository.GemRepository;
 import org.springframework.stereotype.Service;
