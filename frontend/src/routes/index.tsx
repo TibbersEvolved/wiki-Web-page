@@ -1,6 +1,5 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import IndexImageGallery from "../components/index/indexImageGallery";
 import * as data from "../components/index/indexText";
 import IndexTopic from "../components/index/indexTopic";
 
